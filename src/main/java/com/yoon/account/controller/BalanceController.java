@@ -1,5 +1,7 @@
 package com.yoon.account.controller;
 
+import com.yoon.account.dto.DepositRequest;
+import com.yoon.account.dto.WithdrawRequest;
 import com.yoon.account.service.BalanceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,13 +24,13 @@ public class BalanceController {
   }
 
   @PostMapping("/{id}/deposit")
-  public long deposit(@PathVariable("id") long id, @RequestBody long amount) {
-    return balanceService.deposit(id, amount);
+  public long deposit(@PathVariable("id") long id, @RequestBody DepositRequest depositRequest) {
+    return balanceService.deposit(id, depositRequest.getAmount());
   }
 
   @PostMapping("/{id}/withdraw")
-  public long withdraw(@PathVariable("id") long id, @RequestBody long amount) {
-    return balanceService.withdraw(id, amount);
+  public long withdraw(@PathVariable("id") long id, @RequestBody WithdrawRequest withdrawRequest) {
+    return balanceService.withdraw(id, withdrawRequest.getAmount());
   }
 
 }

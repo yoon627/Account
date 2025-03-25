@@ -12,7 +12,7 @@ public class AccountService {
   private final AccountRepository accountRepository;
 
   public Account createAccount() {
-    return accountRepository.save(new Account());
+    return accountRepository.save(Account.builder().build());
   }
 
   public void deleteAccount(long id) {
